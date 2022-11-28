@@ -21,7 +21,10 @@ app.MapPost("/api/people", (Person person, DateTime? dateTime) =>
 {
     return TypedResults.NoContent();
 })
-.WithOpenApi()
+.WithOpenApi(operation => new(operation)
+{
+    Summary = "Calling this endpoint with no dateTime query parameter will cause the endpoint to hang.  If, instead, you specify a value (let's say 2020-01-01), the endpoint is correctly invoked. After that, if you try to call again the endpoint, with no query parameter, now the API is reached as expected."
+})
 ;
 
 app.Run();
