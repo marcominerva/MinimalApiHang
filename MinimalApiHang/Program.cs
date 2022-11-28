@@ -17,7 +17,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Provato a mettere [FromBody] e [FromQuery], provato a creare una classe e annotarla come [AsParameters], ma niente
 app.MapPost("/api/people", (Person person, DateTime? dateTime) =>
 {
     return TypedResults.NoContent();
